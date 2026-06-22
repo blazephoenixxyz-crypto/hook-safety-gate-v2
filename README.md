@@ -92,4 +92,4 @@ MIT. Published as a public good; no exclusivity is claimed.
 
 ## Author
 
-Andrew Jesus
+Blaze Phoenix
