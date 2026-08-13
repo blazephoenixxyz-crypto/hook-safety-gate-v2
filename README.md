@@ -2,6 +2,20 @@
 
 A standalone, default-closed admission gate for routing through Uniswap v4 pools.
 
+> **Three gates, three policies — pick the one that matches your risk appetite.** These are not
+> superseded versions; each gives up something the others keep.
+>
+> | | Codehash pinning | Delta-returning hooks |
+> |---|---|---|
+> | [v1](https://github.com/blazephoenixxyz-crypto/hook-safety-gate) | no | never routable |
+> | **v2** (this repo) | yes | never routable |
+> | [v3](https://github.com/blazephoenixxyz-crypto/hook-safety-gate-v3) | yes | admissible via a two-step timelock |
+>
+> **This is the strictest of the three.** A delta-returning hook can never be admitted here, at
+> read time or write time, and an admitted hook whose code changes stops being routable. If you
+> need a governed path to admitting delta hooks, v3 provides one — but it gives up the absolute
+> refusal that this gate guarantees, so it is a different trade rather than a newer one.
+
 `HookSafetyGate` lets any v4 integrator (a router, aggregator, periphery contract,
 or off-chain solver) decide whether a pool's hook is safe to route through —
 **before any token moves** — using three independent checks:
